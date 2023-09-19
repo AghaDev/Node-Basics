@@ -36,13 +36,16 @@ function startApp(name){
 function onDataReceived(text) {
   
   const text1 = text.split(" ")[0].trim();
+  //splits the words that have spaces between them and then trims the word after the space.
   
   
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
   else if(text1 === 'hello'){
-    hello(text.replace('\n',""));//did it in the previous step
+    hello(text.replace('\n',""));
+    //replace the new line with an empty string to print the words on the same line.
+    //did it in the previous step
   }
   else if(text === 'help\n'){
     help();
@@ -70,7 +73,7 @@ function unknownCommand(c){
  *
  * @returns {void}
  */
-function hello(text){
+function hello(text){ // passed an argument to the hello function
   console.log(text+'!')
 }
 
@@ -86,7 +89,7 @@ function quit(){
 }
 //lists all possible commands
 function help(){
-console.log('list of commands: hello \n quit \n exit \n help \n')
+console.log('list of commands: hello \n hello + your name \n quit \n exit \n help \n')
 }
 
 // The following line starts the application
