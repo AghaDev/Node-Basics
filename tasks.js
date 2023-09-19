@@ -36,7 +36,7 @@ function startApp(name){
 function onDataReceived(text) {
   
   const text1 = text.split(" ")[0].trim();
-  //splits the words that have spaces between them and then trims the word after the space.
+  //splits the words that have spaces between them and then removes the spaces before and after the words.
   
   
   if (text === 'quit\n' || text === 'exit\n') {
@@ -54,7 +54,6 @@ function onDataReceived(text) {
     unknownCommand(text);
   }
 }
-
 
 /**
  * prints "unknown command"
