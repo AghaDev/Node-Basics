@@ -85,5 +85,5 @@ function help(){
 console.log('list of commands: hello \n quit \n exit \n help \n')
 }
 
-// The following line starts the application
+
 startApp("Mohammad Al Agha")
