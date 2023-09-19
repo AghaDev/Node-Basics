@@ -42,9 +42,7 @@ function onDataReceived(text) {
     quit();
   }
   else if(text1 === 'hello'){
-    hello(text.replace('\n',""));
-    
-    // console.log(text1)
+    hello(text.replace('\n',""));//did it in the previous step
   }
   else if(text === 'help\n'){
     help();
