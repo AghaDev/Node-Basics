@@ -36,6 +36,7 @@ function startApp(name){
 function onDataReceived(text) {
   
   const text1 = text.split(" ")[0].trim();
+  console.log(text1);
   //splits the words that have spaces between them and then removes the spaces before and after the words.
   
   
@@ -49,6 +50,14 @@ function onDataReceived(text) {
   }
   else if(text === 'help\n'){
     help();
+  }
+  else if(text === 'list\n'){
+    list();
+  }
+  else if(text1 === 'add'){
+    const taskToAdd = text.substring(3).trim();
+    console.log(taskToAdd);
+    add(taskToAdd);
   }
   else{
     unknownCommand(text);
@@ -76,6 +85,13 @@ function hello(text){ // passed an argument to the hello function
   console.log(text+'!')
 }
 
+function list(){
+console.log("1 - [ ] buy bread\n2 - [ ] do the exercises");
+}
+
+function add(){
+
+}
 
 /**
  * Exits the application
