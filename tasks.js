@@ -32,11 +32,12 @@ function startApp(name){
  * 
  * @param  {string} text data typed by the user
  * @returns {void}
- */
-function onDataReceived(text) {
+ */var listOfTasks = [];
+  function onDataReceived(text) {
   
+  const r=text.slice(4, text.length);
   const text1 = text.split(" ")[0].trim();
-  console.log(text1);
+
   //splits the words that have spaces between them and then removes the spaces before and after the words.
   
   
@@ -55,10 +56,11 @@ function onDataReceived(text) {
     list();
   }
   else if(text1 === 'add'){
-    const taskToAdd = text.substring(3).trim();
-    console.log(taskToAdd);
-    add(taskToAdd);
-  }
+    if (r.trim()===''){
+      console.log('ERROR: Invalid');
+    }else{
+    add(r);
+  }}
   else{
     unknownCommand(text);
   }
@@ -86,11 +88,14 @@ function hello(text){ // passed an argument to the hello function
 }
 
 function list(){
-console.log("1 - [ ] buy bread\n2 - [ ] do the exercises");
+// console.log("1 - [ ] buy bread\n2 - [ ] do the exercises");
+for (let i = 0; i < listOfTasks.length; i++){
+    console.log(i+1 +"[ ]"+listOfTasks[i])
+}
 }
 
-function add(){
-
+function add(task){
+  listOfTasks.push(task.replace('\n',''));
 }
 
 /**
