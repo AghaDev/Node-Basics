@@ -132,8 +132,12 @@ function remove(taskNum){//removes the last task in the list of tasks.
     listOfTasks.pop();
 }
 
-function removeNo(num){ //removes a specific task depending on the user's input task number.
+function removeNo(num){  //removes a specific task depending on the user's input task number.
+  if (num > listOfTasks.length) {
+    console.log('ERROR: Invalid number');
+  }
   listOfTasks.splice(num-1,1);
+
 }
 
 // The following line starts the application
