@@ -35,36 +35,52 @@ function startApp(name){
  */var listOfTasks = [];
   function onDataReceived(text) {
   
-  const r=text.slice(4, text.length);
-  const text1 = text.split(" ")[0].trim();
+    const r=text.slice(4, text.length);
+    const taskNum = text.substring(6).trim()
+    const text1 = text.split(" ")[0].trim();
 
-  //splits the words that have spaces between them and then removes the spaces before and after the words.
-  
-  
-  if (text === 'quit\n' || text === 'exit\n') {
-    quit();
+    //splits the words that have spaces between them and then removes the spaces before and after the words.
+    
+    
+    if (text === 'quit\n' || text === 'exit\n') {
+      quit();
+    }
+    else if(text1 === 'hello'){
+      hello(text.replace('\n',""));
+      //replace the new line with an empty string to print the words on the same line.
+      //did it in the previous step
+    }
+
+    else if(text === 'help\n'){
+      help();
+    }
+
+    else if(text === 'list\n'){
+      list();
+    }
+    
+    else if(text1 === 'add'){
+      if (r.trim()===''){
+        console.log('ERROR: Invalid');
+      }
+      else{
+      add(r);
+    }
   }
-  else if(text1 === 'hello'){
-    hello(text.replace('\n',""));
-    //replace the new line with an empty string to print the words on the same line.
-    //did it in the previous step
+
+    else if(text === 'remove'){
+      remove(taskNum);
   }
-  else if(text === 'help\n'){
-    help();
+
+    else if(text1 === 'remove')
+    {
+      const num = text.slice(7,text.length);
+      removeNo(num);
+    }
+    else{
+      unknownCommand(text);
+    }
   }
-  else if(text === 'list\n'){
-    list();
-  }
-  else if(text1 === 'add'){
-    if (r.trim()===''){
-      console.log('ERROR: Invalid');
-    }else{
-    add(r);
-  }}
-  else{
-    unknownCommand(text);
-  }
-}
 
 /**
  * prints "unknown command"
@@ -90,7 +106,7 @@ function hello(text){ // passed an argument to the hello function
 function list(){
 // console.log("1 - [ ] buy bread\n2 - [ ] do the exercises");
 for (let i = 0; i < listOfTasks.length; i++){
-    console.log(i+1 +"[ ]"+listOfTasks[i])
+    console.log(i+1 +"-[ ]"+listOfTasks[i])
 }
 }
 
@@ -110,6 +126,14 @@ function quit(){
 //lists all possible commands
 function help(){
 console.log('list of commands: hello \n hello + your name \n quit \n exit \n help \n')
+}
+
+function remove(taskNum){
+    listOfTasks.pop();
+}
+
+function removeNo(num){
+  listOfTasks.splice(num-1,1);
 }
 
 // The following line starts the application
