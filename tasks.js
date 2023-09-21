@@ -103,7 +103,7 @@ function hello(text){ // passed an argument to the hello function
   console.log(text+'!')
 }
 
-function list(){
+function list(){ //add tasks to the list as much as the user enters.
 // console.log("1 - [ ] buy bread\n2 - [ ] do the exercises");
 for (let i = 0; i < listOfTasks.length; i++){
     console.log(i+1 +"-[ ]"+listOfTasks[i])
@@ -128,11 +128,11 @@ function help(){
 console.log('list of commands: hello \n hello + your name \n quit \n exit \n help \n')
 }
 
-function remove(taskNum){
+function remove(taskNum){//removes the last task in the list of tasks.
     listOfTasks.pop();
 }
 
-function removeNo(num){
+function removeNo(num){ //removes a specific task depending on the user's input task number.
   listOfTasks.splice(num-1,1);
 }
 
