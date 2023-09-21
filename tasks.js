@@ -77,10 +77,18 @@ function startApp(name){
       const num = text.slice(7,text.length);
       removeNo(num);
     }
+
+    else if(text === 'edit\n'){
+      console.log("ERROR: Invalid");
+    }
+    else if(text1 === 'edit'){
+      var newTask = text.substring(4).trim();
+      edit(newTask);
+    }
+
     else{
       unknownCommand(text);
     }
-  }
 
 /**
  * prints "unknown command"
@@ -139,6 +147,36 @@ function removeNo(num){  //removes a specific task depending on the user's input
   listOfTasks.splice(num-1,1);
 
 }
+
+
+function edit(newTask){
+
+  if(newTask == "" || newTask == " "){
+    console.log('ERROR: task cannot be empty');
+    return;
+  }
+
+  if(isNaN(newTask[0]))
+  {
+    console.log(listOfTasks[listOfTasks.length-1])
+    listOfTasks[listOfTasks.length-1] = newTask;
+    console.log('task edited:  '+ listOfTasks);
+  }
+
+  else if(newTask[0] > listOfTasks.length)
+  {
+    console.log("Task doesn't exist, add a new task, insert add + your task!!");
+  }
+  else
+  {
+    listOfTasks[newTask[0]-1] = newTask.substring(1).trim();
+    console.log('task edited:  '+ listOfTasks);
+  }
+
+
+}
+  }
+
 
 // The following line starts the application
 startApp("Mohammad Al Agha")
